@@ -24,17 +24,17 @@ const Board = (function () {
         //Checking rows and columns
         for (let i = 0; i < state.length; i++) {
             if ((state[i][0] == state[i][1]) && (state[i][0] == (state[i][2])) && (["X","O"].includes(state[i][0]))) {
-              return true
+              return state[i][0]
             } else if ((state[0][i] == state[1][i]) && (state[0][i] == (state[2][i])) && (["X","O"].includes(state[0][i]))){
-              return true
+              return state[0][i]
             };
         };
 
         // Cheking the diagonals
         if ((state[0][0] == state[1][1]) && (state[0][0] == (state[2][2])) && (["X","O"].includes(state[0][0]))) {
-            return true
+            return state[0][0]
         } else if ((state[0][2] == state[1][1]) && (state[0][2] == (state[2][0])) && (["X","O"].includes(state[0][2]))) {
-            return true
+            return state[0][2]
         } else {
           return false
         };
@@ -50,6 +50,26 @@ const Board = (function () {
 
 
 const Game = ( function () {
-    const definePlayers = 
+    let player1 = createPlayer("Player 1", 1);
+    let player2 = createPlayer("Player 2", 2);
+
+    const definePlayers = () =>{
+        //Call for first player
+        player1.name = prompt("Player 1 name");
+        //Call for second player
+        player2.name = prompt("Player 2 name");
+    };
+    const getPlayers = () => [player1, player2];
+    const turn = (coordinates) => {
+        if ((Board.getTurn() % 2) == 0) {
+            Board.move(player1, coordinates);
+        } else {
+            Board.move(player2, coordinates)
+        };
+    };
+
+
+
+    return {definePlayers, getPlayers, turn};
 }) ();
 
