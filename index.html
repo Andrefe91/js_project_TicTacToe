@@ -14,12 +14,29 @@
         <!-- Header -->
         <header class="header">
             <div class="title">
-                <span>Tic</span> <span>Tac</span> <span>Toe</span>
+                <div class="word">Tic</div> <div class="word">Tac</div> <div class="word">Toe</div>
             </div>
         </header>
 
         <!-- Section -->
         <section class="game">
+            <div class="options_container">
+                <div class="options">
+                    <p>Game Info</p>
+
+                    <p class="turn">Turn: <span id="turn">0</span></p>
+
+                    <p>Players</p>
+
+                    <p class="player" id="p1_name">Player 1</p>
+                    <p class="player" id="p2_name">Player 2</p>
+
+                    <p>Actions</p>
+
+                    <div class="option_button" id="set_name">Set Player Names</div>
+                    <div class="option_button" id="restart_game">Restart Game</div>
+                </div>
+            </div>
             <div class="game container">
                 <div class="cell valid" id="1" position="[0,0]">1</div>
                 <div class="cell valid" id="2" position="[0,1]">2</div>
@@ -35,9 +52,15 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <div>Footer Placeholder</div>
+            <div>Made with </div>
+            <div class="heart"></div>
+            <div>for the <a href="https://www.theodinproject.com/">The Odin Project</a>, find it on
+                <a href="https://github.com/Andrefe91/js_project_TicTacToe">Github</a> !!</div>
+
         </footer>
 
     </div>
 </body>
 </html>
+
+
