@@ -117,6 +117,14 @@ header .title .word:nth-child(odd) {
     text-decoration: none;
 }
 
+.oMark {
+    color: #0079FF;
+}
+
+.xMark {
+    color: #FF0079;
+}
+
 .options .player {
     font-size: 1.5em;
     text-decoration: none;
@@ -201,7 +209,8 @@ header .title .word:nth-child(odd) {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    /* box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset; */
+    box-shadow: rgba(50, 50, 93, 0.25) 10px 10px 10px -5px inset, rgba(0, 0, 0, 0.3) 0px 5px 36px -18px inset;
 
 }
 
@@ -220,15 +229,24 @@ header .title .word:nth-child(odd) {
     }
 }
 
+.cell.X {
+    color: #0079FF;
+}
+
+.cell.O {
+    color: #FF0079;
+}
+
 /* Footer */
 footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 100vw;
+    width: calc(100vw - 1em);
     height: 2em;
     background-color: var(--color);
     border-top: 2px solid #111;
+    padding-right: 1em;
 }
 
 footer div {

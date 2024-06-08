@@ -1,7 +1,4 @@
-// import { createPlayer, Board, Game } from "./tictactoe";
-
-//To delete and try later
-function createPlayer (name, number) {
+export function createPlayer (name, number) {
     let symbol = number > 1 ? 'O' : 'X';
 
     return {
@@ -10,7 +7,7 @@ function createPlayer (name, number) {
     };
 };
 
-const Board = (function () {
+export const Board = (function () {
     let turnNumber = 0;
     let state = [["_","_","_"],["_","_","_"],["_","_","_"]];
     const getTurnNumber = () => turnNumber;
@@ -56,16 +53,22 @@ const Board = (function () {
     return {state, move, valid, winCondition, getTurnNumber, prettyPrint, reset};
 })();
 
+// Note: The `turn` property on the returned object is set to the initial value of the `turn` variable at the time the IIFE
+// executes, which is 0. This value does not automatically update when the internal `turn` variable changes because it's
+// a primitive value, not a reference to the internal turn variable. Essentially, you're copying the value of `turn` into
+// the returned object, not maintaining a reference to the internal variable. To ensure the turn property on the returned
+// object always reflect the current value of the internal `turn` variable, you should use a getter method.
 
-const Game = ( function () {
+
+export const Game = ( function () {
     let player1 = createPlayer("Player 1", 1);
     let player2 = createPlayer("Player 2", 2);
 
     const definePlayers = () =>{
         //Call for first player
-        player1.name = (prompt("Player 1 name") || "Player 1");
+        player1.name = prompt("Player 1 name");
         //Call for second player
-        player2.name = (prompt("Player 2 name") || "Player 2");
+        player2.name = prompt("Player 2 name");
     };
     const getPlayers = () => [player1, player2];
     const  makeMove= (coordinates) => {
@@ -79,15 +82,12 @@ const Game = ( function () {
     const checkWinner = () => {
         if (Board.winCondition() == "X") {
             console.log(`${player1.name} wins!`);
-            alert(`${player1.name} wins!`);
             return true;
         } else if (Board.winCondition() == "O") {
             console.log(`${player2.name} wins!`);
-            alert(`${player2.name} wins!`);
             return true;
         } else if (Board.getTurnNumber() == 9) {
             console.log("It's a draw!");
-            alert("It's a draw!");
             return true;
         } else {
             console.log("No winner yet!");
@@ -103,72 +103,4 @@ const Game = ( function () {
     };
     return {definePlayers, getPlayers, makeMove, checkWinner, getTurnMark};
 }) ();
-// The above is going to a module
-
-
-// --------------------------------------------------------------------
-
-//Calling the selectors
-const turn = document.querySelector("#turn");
-const setPlayer = document.querySelector("#set_name");
-const restartGame = document.querySelector("#restart_game");
-const cells = document.getElementsByClassName("cell"); //HTMLCollection array
-const player1Name = document.querySelector("#p1_name");
-const player2Name = document.querySelector("#p2_name");
-
-// Event functions
-
-function selectCell(event) {
-        // Get coordinate and make move
-        let position = event.target.getAttribute("position");
-        event.target.innerHTML = `${Game.getTurnMark()}`;
-        Game.makeMove([position[1],position[3]]);
-        turn.innerHTML = (Board.getTurnNumber() + 1);
-
-        // Remove class to make the selection invalid
-        event.target.classList.add(`${Game.getTurnMark()}`); //Some style baby
-        event.target.classList.remove("valid");
-        event.target.removeEventListener("click", selectCell)
-        let winner = Game.checkWinner();
-
-        if (winner) { deactivateAll() }; //Finish the game
-};
-
-function deactivateAll() {
-    console.log("Deactivating...")
-    for (const cell of cells) {
-        cell.classList.remove("valid");
-    };
-};
-
-function reset() {
-    Board.reset(); //Resert turn number and board
-    turn.innerHTML = Board.getTurnNumber();
-
-    for (const cell of cells) {
-        cell.innerHTML = "_";
-        cell.removeEventListener("click", selectCell);
-        cell.classList.remove("X");
-        cell.classList.remove("O");
-        cell.classList.add("valid");
-        cell.addEventListener("click", selectCell);
-    };
-};
-
-//Adding the event listeners
-setPlayer.addEventListener("click", () => {
-    Game.definePlayers();
-    console.log(Game.getPlayers());
-    player1Name.innerHTML = `<span class="xMark">X</span> - ${Game.getPlayers()[0].name}`;
-    player2Name.innerHTML = `<span class="oMark">O</span> - ${Game.getPlayers()[1].name}`;
-});
-
-restartGame.addEventListener("click", () => {
-    console.log("Restart the game")
-    reset();
-});
-
-for (const cell of cells) {
-    cell.addEventListener("click", selectCell);
-};
 

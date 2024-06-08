@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style/style.css">
-    <script src="javascript/script.js"></script>
+    <script src="javascript/script.js" defer></script>
 </head>
 <body>
     <!-- Main Container -->
@@ -24,12 +24,12 @@
                 <div class="options">
                     <p>Game Info</p>
 
-                    <p class="turn">Turn: <span id="turn">0</span></p>
+                    <p class="turn">Turn: <span id="turn">1</span></p>
 
                     <p>Players</p>
 
-                    <p class="player" id="p1_name">Player 1</p>
-                    <p class="player" id="p2_name">Player 2</p>
+                    <p class="player" id="p1_name"><span class="xMark">X</span> - Player 1</p>
+                    <p class="player" id="p2_name"><span class="oMark">O</span> - Player 2</p>
 
                     <p>Actions</p>
 
@@ -38,15 +38,15 @@
                 </div>
             </div>
             <div class="game container">
-                <div class="cell valid" id="1" position="[0,0]">1</div>
-                <div class="cell valid" id="2" position="[0,1]">2</div>
-                <div class="cell valid" id="3" position="[0,2]">3</div>
-                <div class="cell valid" id="4" position="[1,0]">4</div>
-                <div class="cell valid" id="5" position="[1,1]">5</div>
-                <div class="cell valid" id="6" position="[1,2]">6</div>
-                <div class="cell valid" id="7" position="[2,0]">7</div>
-                <div class="cell valid" id="8" position="[2,1]">8</div>
-                <div class="cell valid" id="9" position="[2,2]">9</div>
+                <div class="cell valid" id="1" position="[0,0]">_</div>
+                <div class="cell valid" id="2" position="[0,1]">_</div>
+                <div class="cell valid" id="3" position="[0,2]">_</div>
+                <div class="cell valid" id="4" position="[1,0]">_</div>
+                <div class="cell valid" id="5" position="[1,1]">_</div>
+                <div class="cell valid" id="6" position="[1,2]">_</div>
+                <div class="cell valid" id="7" position="[2,0]">_</div>
+                <div class="cell valid" id="8" position="[2,1]">_</div>
+                <div class="cell valid" id="9" position="[2,2]">_</div>
             </div>
         </section>
 
