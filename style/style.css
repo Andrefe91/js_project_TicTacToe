@@ -39,7 +39,7 @@ body {
     display: flex;
     flex-direction: column;
     /* outline: 1px solid red; */
-    align-items: stretch;
+    align-items: center;
     height: 100vh;
 
 }
@@ -49,6 +49,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100vw;
     height: 120px;
     border-bottom: 2px solid #111;
 
@@ -84,7 +85,6 @@ header .title .word:nth-child(odd) {
     align-items: center;
     justify-content: center;
     flex: 1;
-    outline: 1px solid red;
     width: 1000px;
 }
 
@@ -102,7 +102,6 @@ header .title .word:nth-child(odd) {
 
     width: 250px;
     border-radius: 10px;
-    margin-left: 2em;
     padding: 1em;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -226,8 +225,8 @@ footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    width: 100vw;
     height: 2em;
-    padding-right: 1em;
     background-color: var(--color);
     border-top: 2px solid #111;
 }
